@@ -3,7 +3,7 @@ import pygame
 def scene_start(screen):
     screen.fill((255, 255, 255))
 
-def scence_setup(screen):
+def scene_setup(screen):
     pass
 
 def scene_main(screen):   
