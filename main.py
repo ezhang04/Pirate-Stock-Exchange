@@ -2,25 +2,25 @@ import pygame
 from pygame import *
 import random
 from pygame_widgets.button import Button
-from pirate import Pirate
+from ship import Ship
 
 pygame.init()
 screen = pygame.display.set_mode((1250, 800))
 clock = pygame.time.Clock()
 running = True
 button1 = Button(screen, 100, 100, 300, 150)
-crew1 = Pirate(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew2 = Pirate(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew3 = Pirate(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew4 = Pirate(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew5 = Pirate(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew6 = Pirate(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew7 = Pirate(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew8 = Pirate(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew9 = Pirate(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew10 = Pirate(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew11 = Pirate(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew12 = Pirate(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+crew1 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+crew2 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+crew3 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+crew4 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+crew5 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+crew6 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+crew7 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+crew8 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+crew9 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+crew10 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+crew11 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+crew12 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
 
 start = 1
 set = 2
