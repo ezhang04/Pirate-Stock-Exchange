@@ -8,4 +8,4 @@
 
 > Team Members: Eric Zhang, Bryan Chan, Assaf Izhar, Marcela Moura
 
-> Resources Used: pygame
+> Resources Used: pygame, pygame_widgets
