@@ -27,9 +27,9 @@ class scene_handler:
             self.scene_lose
 
     def scene_start(self):
-        self.screen.fill((255, 255, 255))
-        button1 = Button(self.screen, 100, 100, 300, 150, "sldkjgklsd", "black", "black")
-        button1.draw()
+        #test
+        bg = pygame.image.load("assets/oceanMap.png")
+        self.screen.blit(bg, (0,0))
 
     def scene_setup(self):
         pass
@@ -49,6 +49,14 @@ class scene_handler:
         pass
 
 class Button:
+
+    def __init__(self, surface, x, y, width, height, text, color, text_color, action=None):
+        self.surface = surface
+        self.rect = pygame.Rect(x, y, width, height)
+        self.text = text
+        self.color = color
+        self.text_color = text_color
+
     def __init__(self, surface, x, y, width, height, text=None, image=None, color=None, text_color=None, action=None):
         self.surface = surface
         self.rect = pygame.Rect(x, y, width, height)
@@ -59,10 +67,17 @@ class Button:
             self.image = pygame.transform.scale(self.image, (width, height))
         self.color = color if color else (0, 128, 255)  # Default color
         self.text_color = text_color if text_color else (255, 255, 255)  # Default text color
+
         self.font = pygame.font.Font(None, 36)
         self.action = action
 
     def draw(self):
+
+        pygame.draw.rect(self.surface, self.color, self.rect)
+        text_surface = self.font.render(self.text, True, self.text_color)
+        text_rect = text_surface.get_rect(center=self.rect.center)
+        self.surface.blit(text_surface, text_rect)
+        
         if self.image:
             self.surface.blit(self.image, self.rect.topleft)
         else:
@@ -79,3 +94,4 @@ class Button:
                 if self.rect.collidepoint(event.pos):
                     if self.action is not None:
                         self.action()
+
