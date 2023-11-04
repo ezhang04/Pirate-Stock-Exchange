@@ -1,6 +1,6 @@
 import random
 
-def battle_phase(user_crew, enemy_crew):
+def battle_phase(user_crew, enemy_crew,user,enemy):
     total_user = user_crew.crew_number
     total_enemy = enemy_crew.crew_number
     user = [0,0,0,0]
