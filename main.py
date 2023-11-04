@@ -9,18 +9,12 @@ screen = pygame.display.set_mode((1250, 800))
 clock = pygame.time.Clock()
 running = True
 button1 = Button(screen, 100, 100, 300, 150)
-crew1 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew2 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew3 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew4 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew5 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew6 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew7 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew8 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew9 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew10 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew11 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
-crew12 = Ship(random.randrange(1,31),random.randrange(1,21),random.randrange(0,1001))
+
+crews = []
+num_crews = 50
+
+for i in range(num_crews):
+    crews += Ship(random.randrange(1, 31) + i, random.randrange(1, 21) + (2 * i), random.randrange(0, 1001) + i)
 
 start = 1
 set = 2
