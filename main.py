@@ -32,17 +32,17 @@ while running:
             running = False
 
     if state == 1:
-        scenes.scene_start()
+        scenes.scene_start(screen)
     elif state == 2:
-        scenes.scene_setup()
+        scenes.scene_setup(screen)
     elif state == 3:
-        scenes.scene_main()
+        scenes.scene_main(screen)
     elif state == 4:
-        scenes.scene_battle()
+        scenes.scene_battle(screen)
     elif state == 5:
-        scenes.scene_win()
+        scenes.scene_win(screen)
     elif state == 6:
-        scenes.scene_lose()
+        scenes.scene_lose(screen)
 
     
 
