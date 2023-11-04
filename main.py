@@ -1,9 +1,9 @@
 import pygame
 from pygame import *
 import random
-from pygame_widgets.button import Button
 from ship import Ship
-import scenes
+from scenes import scene_handler
+import time
 
 pygame.init()
 screen = pygame.display.set_mode((1250, 800))
@@ -17,39 +17,30 @@ num_crews = 12
 for i in range(1,num_crews):
     crews += [Ship(random.randrange(1, 31), random.randrange(1, 21), random.randrange(0, 1001))]
 
-START = 1
-SET = 2
-MAIN = 3
-BATTLE = 4
-WIN = 5
-LOSE = 6
+START = 0
+SET = 1
+MAIN = 2
+BATTLE = 3
+WIN = 4
+LOSE = 5
 
-state = 1
+state = 0
+
+scene_handler = scene_handler(0,screen)
 
 while running:
-    for event in pygame.event.get():
+    events = pygame.event.get()
+    for event in events:
         if event.type == pygame.QUIT:
             running = False
 
-    if state == 1:
-        scenes.scene_start(screen)
-    elif state == 2:
-        scenes.scene_setup(screen)
-    elif state == 3:
-        scenes.scene_main(screen)
-    elif state == 4:
-        scenes.scene_battle(screen)
-    elif state == 5:
-        scenes.scene_win(screen)
-    elif state == 6:
-        scenes.scene_lose(screen)
-
-    
+    scene_handler.present_scene()
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_ESCAPE]:
         running = False
 
+    pygame_widgets.update(events)
     pygame.display.flip()
     clock.tick(60)
 
