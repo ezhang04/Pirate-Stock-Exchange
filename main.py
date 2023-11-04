@@ -3,6 +3,7 @@ from pygame import *
 import random
 from pygame_widgets.button import Button
 from ship import Ship
+import scenes
 
 pygame.init()
 screen = pygame.display.set_mode((1250, 800))
@@ -16,12 +17,12 @@ num_crews = 50
 for i in range(num_crews):
     crews += [Ship(random.randrange(1, 31) + i, random.randrange(1, 21) + (2 * i), random.randrange(0, 1001) + i)]
 
-start = 1
-set = 2
-main = 3
-battle = 4
-win = 5
-lose = 6
+START = 1
+SET = 2
+MAIN = 3
+BATTLE = 4
+WIN = 5
+LOSE = 6
 
 state = 1
 
@@ -29,19 +30,19 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    screen.fill("red")
+
     if state == 1:
-        screen.fill("blue")
+        scenes.scene_start(screen)
     elif state == 2:
-        screen.fill("blue")
+        scenes.scene_setup(screen)
     elif state == 3:
-        screen.fill("blue")
+        scenes.scene_main(screen)
     elif state == 4:
-        screen.fill("blue")
+        scenes.scene_battle(screen)
     elif state == 5:
-        screen.fill("blue")
+        scenes.scene_win(screen)
     elif state == 6:
-        screen.fill("blue")
+        scenes.scene_lose(screen)
 
     
 
