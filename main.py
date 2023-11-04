@@ -12,10 +12,10 @@ running = True
 button1 = Button(screen, 100, 100, 300, 150)
 
 crews = []
-num_crews = 50
+num_crews = 12
 
-for i in range(num_crews):
-    crews += [Ship(random.randrange(1, 31) + i, random.randrange(1, 21) + (2 * i), random.randrange(0, 1001) + i)]
+for i in range(1,num_crews):
+    crews += [Ship(random.randrange(1, 31), random.randrange(1, 21), random.randrange(0, 1001))]
 
 START = 0
 SET = 1

@@ -7,9 +7,10 @@ class scene_handler:
         self.current_scene = initial_scene
         self.screen = screen
         self.buttons = []
-
     def change_scene(self,scene):
         self.current_scene = scene
+    def scene_setup(screen):
+      pass
 
     def present_scene(self):
         if self.current_scene == 0:
