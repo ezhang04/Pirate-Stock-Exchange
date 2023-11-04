@@ -28,7 +28,8 @@ class scene_handler:
 
     def scene_start(self):
         self.screen.fill((255, 255, 255))
-        time.sleep(1)
+        button1 = Button(self.screen, 100, 100, 300, 150, "sldkjgklsd", "black", "black")
+        button1.draw()
 
     def scene_setup(self):
         pass
