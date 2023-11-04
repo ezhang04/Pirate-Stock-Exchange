@@ -14,7 +14,7 @@ crews = []
 num_crews = 50
 
 for i in range(num_crews):
-    crews += Ship(random.randrange(1, 31) + i, random.randrange(1, 21) + (2 * i), random.randrange(0, 1001) + i)
+    crews += [Ship(random.randrange(1, 31) + i, random.randrange(1, 21) + (2 * i), random.randrange(0, 1001) + i)]
 
 start = 1
 set = 2
