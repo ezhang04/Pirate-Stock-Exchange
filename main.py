@@ -3,13 +3,14 @@ from pygame import *
 import random
 from ship import Ship
 from scenes import scene_handler
+from scenes import Button
 import time
 
 pygame.init()
 screen = pygame.display.set_mode((1250, 800))
 clock = pygame.time.Clock()
 running = True
-button1 = Button(screen, 100, 100, 300, 150)
+
 
 crews = []
 num_crews = 12
@@ -40,7 +41,6 @@ while running:
     if keys[pygame.K_ESCAPE]:
         running = False
 
-    pygame_widgets.update(events)
     pygame.display.flip()
     clock.tick(60)
 
