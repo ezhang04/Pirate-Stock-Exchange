@@ -27,66 +27,25 @@ class scene_handler:
             self.scene_lose
 
     def scene_start(self):
-        bg = pygame.image.load("assets/start.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
-        
+        bg = pygame.image.load("assets/oceanMap.png")
+        self.screen.blit(pygame.transform.scale(bg, (1000, 1000)), (0, 0))
 
     def scene_setup(self):
-        bg = pygame.image.load("assets/oceanMap.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
-        ship_margin = 50
-
-        ship_x = 150
-        ship_y = 250
-
-        for i in range(1, 9):
-            
-            ship_image = pygame.image.load(f"assets/ship{i}_inPixio.png")
-
-            resized_ship = pygame.transform.scale(ship_image, (100, 100))
-
-            self.screen.blit(resized_ship, (ship_x, ship_y))
-
-            ship_x += 100 + ship_margin
-
-            if i % 4 == 0:
-                ship_x = 150
-                ship_y += 150 + ship_margin
-        
+        pass
 
     def scene_main(self):   
-        bg = pygame.image.load("assets/oceanMap.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
-        ship_margin = 50
-
-        ship_x = 150
-        ship_y = 250
-
-        for i in range(1, 9):
-            
-            ship_image = pygame.image.load(f"assets/ship{i}_inPixio.png")
-
-            resized_ship = pygame.transform.scale(ship_image, (100, 100))
-
-            self.screen.blit(resized_ship, (ship_x, ship_y))
-
-            ship_x += 100 + ship_margin
-
-            if i % 4 == 0:
-                ship_x = 150
-                ship_y += 150 + ship_margin
+        self.screen.clear()
+        self.screen.fill((255, 255, 255))
+        pass
 
     def scene_battle(self):
-        bg = pygame.image.load("assets/battle.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        pass
 
     def scene_win(self):
-        bg = pygame.image.load("assets/win.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        pass
 
     def scene_lose(self):
-        bg = pygame.image.load("assets/lose.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        pass
 
 class Button:
 

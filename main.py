@@ -7,14 +7,14 @@ from scenes import Button
 import time
 
 pygame.init()
-screen = pygame.display.set_mode((820, 820))
+screen = pygame.display.set_mode((1000, 1000))
 clock = pygame.time.Clock()
 running = True
 
 crews = []
 num_crews = 12
 
-for i in range(1,num_crews+1):
+for i in range(1,num_crews):
     crews += [Ship(random.randrange(1, 31), random.randrange(1, 21), random.randrange(0, 1001))]
 
 START = 0
