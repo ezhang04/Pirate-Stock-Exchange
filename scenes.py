@@ -41,15 +41,12 @@ class scene_handler:
             self.scene_lose()
 
     def scene_start(self):
-        running = True
         bg = pygame.image.load("assets/start.png")
         self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
-        start_button = Button(self.screen, 200, 400, width=400, height=100, text="START!",
-                              color="#FCEA67", text_color="#69C5FA", font=(None,50))
+        start_button = Button(self.screen, 400, 700, 80, 80, "Start", action=lambda: self.change_scene(1))
         self.buttons.append(start_button)
         start_button.draw()
-
 
         running = True
         while running:
@@ -57,11 +54,17 @@ class scene_handler:
             for event in events:
                 if event.type == pygame.QUIT:
                     running = False
-
+                for button in self.buttons:
+                    button.handle_event(event)
+            if self.current_scene != 0:
+                running = False
+                self.buttons.clear()
             pygame.display.flip()
+                
             keys = pygame.key.get_pressed()
             if keys[pygame.K_ESCAPE]:
                 running = False
+
    
  
     def scene_setup(self):
@@ -179,7 +182,7 @@ class scene_handler:
         bg = pygame.image.load("assets/battle.png")
 
         
-        textbox = pygame.image.load("assets/text.png")
+        textbox = pygame.image.load("assets/textbox.png")
 
         self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
         textbox = pygame.image.load("assets/textbox.png")

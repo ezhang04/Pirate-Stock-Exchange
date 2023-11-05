@@ -7,35 +7,22 @@ def battle_phase(user_crew, user_crew_positions, enemy_crew, enemy_crew_position
     user_crew_positions: an integer array [attackers, defenders, sailors, medics]
     enemy_crew_positions: an integer array [attackers, defenders, sailors, medics]
     '''
-    user_hp = user_crew.getCrew() #user crew size
-    enemy_hp = enemy_crew.getCrew() #enemy crew size
+    power1 = user_crew.getPower()
+    power2 = enemy_crew.getPower()
+    win = 0
     
-    user_crew_values = [x * user_crew.getPower() for x in user_crew_positions] 
-    #this gives us [damage per tick, speed per tick, defense per tick, heal per tick]
-    enemy_crew_values = [x * enemy_crew.getPower() for x in enemy_crew_positions]
-
-    while(user_hp > 0 and enemy_hp > 0):
-        user_hp -= (enemy_crew_values[0] - enemy_crew_values[2]) #user_hp gets subtracted by the enemy attacker's damage
-        enemy_hp -= (user_crew_values[0] - user_crew_values[2]) #enemy_hp gets subtracted by the user's attacker damage
-
-        user_diff = int(user_hp) - sum(user_crew_positions) #get the number of units killed in this tick on user team
-        enemy_diff = int(enemy_hp) - sum(enemy_crew_positions) #get the number of units killed in this tick on enemy team
-
-        for i in range(user_diff):
-            user_crew_values[random.randrange(0, 4)] -= 1 #for each dead crew mate, lose a random position
-        for i in range(enemy_diff):
-            user_crew_values[random.randrange(0, 4)] -= 1 #for each dead crew mate, lose a random position
-        
-        if(user_hp <= 0 and enemy_hp <= 0): return 0 #tie
-        if(user_hp <= 0): return -1 #enemy wins
-        if(enemy_hp <= 0): return 1 #user wins
-
-        user_hp += user_crew_values[3]
-        enemy_hp += enemy_crew_values[3]
-
-        #update new positions (after some died lol)
-        user_crew_values = [x * user_crew.getPower() for x in user_crew_positions] 
-        enemy_crew_values = [x * enemy_crew.getPower() for x in enemy_crew_positions]
+    for i in range(4):
+        if ((user_crew_positions[i]*power1 - enemy_crew_positions[i]*power2) < 0):
+            win -= 1
+        elif ((user_crew_positions[i]*power1 - enemy_crew_positions[i]*power2) > 0):
+            win += 1
+    if (win < 0):
+        return -1
+    elif (win > 0):
+        return 1
+    else:
+        return 0
+    
     
 def treasure (crew):
     value = random.randrange(0,501)
