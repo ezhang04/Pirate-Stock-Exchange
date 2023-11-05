@@ -27,10 +27,10 @@ class scene_handler:
             self.scene_lose()
 
     def scene_start(self):
-        pass
-        bg = pygame.image.load("assets/start.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
-        
+        bg = pygame.image.load("assets/oceanMap.png")
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
+
+
 
     def scene_setup(self):
         bg = pygame.image.load("assets/oceanMap.png")
@@ -76,8 +76,7 @@ class scene_handler:
                 ship_y += 150 + ship_margin
 
     def scene_battle(self):
-        bg = pygame.image.load("assets/battle.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        pass
 
     def scene_win(self):
         bg = pygame.image.load("assets/win.png")
