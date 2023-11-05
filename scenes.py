@@ -36,6 +36,7 @@ class scene_handler:
                     running = False
 
             self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
+                             
 
         pygame.display.flip()
         keys = pygame.key.get_pressed()
