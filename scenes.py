@@ -29,7 +29,7 @@ class scene_handler:
     def scene_start(self):
         pass
         bg = pygame.image.load("assets/start.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
         
 
     def scene_setup(self):
@@ -55,7 +55,7 @@ class scene_handler:
 
     def scene_main(self):   
         bg = pygame.image.load("assets/oceanMap.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
         ship_margin = 50
 
         ship_x = 150
@@ -77,18 +77,18 @@ class scene_handler:
 
     def scene_battle(self):
         bg = pygame.image.load("assets/battle.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
     def scene_win(self):
         bg = pygame.image.load("assets/win.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
     def scene_lose(self):
         bg = pygame.image.load("assets/lose.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
 class Button:
-
+    
     def __init__(self, surface, x, y, width, height, text, color, text_color, action=None):
         self.surface = surface
         self.rect = pygame.Rect(x, y, width, height)
@@ -104,25 +104,23 @@ class Button:
         if image:
             self.image = pygame.image.load(image)
             self.image = pygame.transform.scale(self.image, (width, height))
-        self.color = color if color else (0, 128, 255)  # Default color
+        self.color = color if color else (0, 0, 0,0)  # Default color
         self.text_color = text_color if text_color else (255, 255, 255)  # Default text color
 
         self.font = pygame.font.Font(None, 36)
         self.action = action
 
-    def draw(self):
-
-        pygame.draw.rect(self.surface, self.color, self.rect)
-        text_surface = self.font.render(self.text, True, self.text_color)
-        text_rect = text_surface.get_rect(center=self.rect.center)
-        self.surface.blit(text_surface, text_rect)
-        
+    def draw(self):        
         if self.image:
             self.surface.blit(self.image, self.rect.topleft)
         else:
             pygame.draw.rect(self.surface, self.color, self.rect)
 
         if self.text:
+            pygame.draw.rect(self.surface, self.color, self.rect)
+            text_surface = self.font.render(self.text, True, self.text_color)
+            text_rect = text_surface.get_rect(center=self.rect.center)
+            self.surface.blit(text_surface, text_rect)
             text_surface = self.font.render(self.text, True, self.text_color)
             text_rect = text_surface.get_rect(center=self.rect.center)
             self.surface.blit(text_surface, text_rect)
