@@ -40,7 +40,7 @@ class scene_handler:
 
     def scene_start(self):
         running = True
-        bg = pygame.image.load("assets/oceanMap.png")
+        bg = pygame.image.load("assets/start.png")
         while running:
             events = pygame.event.get()
             for event in events:
@@ -49,13 +49,11 @@ class scene_handler:
 
             self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
-
             pygame.display.flip()
             keys = pygame.key.get_pressed()
             if keys[pygame.K_ESCAPE]:
                 running = False
-            
-        
+ 
     def scene_setup(self):
         bg = pygame.image.load("assets/oceanMap.png")
         
@@ -74,7 +72,12 @@ class scene_handler:
             ship_button.draw()
             y+=150
             counter += 1
-            
+
+
+
+        textbox = pygame.image.load("assets/setup_box.png")
+        self.screen.blit(textbox, (100, 110))
+
         running = True
         while running:
             events = pygame.event.get()
@@ -99,7 +102,7 @@ class scene_handler:
 
     def scene_main(self):   
         bg = pygame.image.load("assets/oceanMap.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
         ship_margin = 50
 
         ship_x = 150
@@ -142,15 +145,16 @@ class scene_handler:
             
 
     def scene_battle(self):
+
         font = pygame.font.Font(None, 36)
         value = 0
         active = False
+      
         bg = pygame.image.load("assets/battle.png")
         self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
         textbox = pygame.image.load("assets/textbox.png")
         self.screen.blit(pygame.transform.scale(textbox, (400, 400)), (0, 0))
         b2 = Button(self.screen,400,700, 80, 80, text="FINISH", color=(100,100,100),action=lambda:self.change_scene(4))
-
 
         #text1
         text1 = ["TIME TO FIGHT!!!! Well, almost..." ,
@@ -324,10 +328,15 @@ class scene_handler:
             keys = pygame.key.get_pressed()
             if keys[pygame.K_ESCAPE]:
                 running = False
-
+                
+                pygame.display.flip()
+                keys = pygame.key.get_pressed()
+                if keys[pygame.K_ESCAPE]:
+                    running = False
+                    
     def scene_lose(self):
         bg = pygame.image.load("assets/lose.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
         running = True
         while running:
@@ -343,7 +352,7 @@ class scene_handler:
                 running = False
 
 class Button:
-
+    
     def __init__(self, surface, x, y, width, height, text, color, text_color, action=None):
         self.surface = surface
         self.rect = pygame.Rect(x, y, width, height)
@@ -359,25 +368,23 @@ class Button:
         if image:
             self.image = pygame.image.load(image)
             self.image = pygame.transform.scale(self.image, (width, height))
-        self.color = color if color else (0, 128, 255)  # Default color
+        self.color = color if color else (0, 0, 0,0)  # Default color
         self.text_color = text_color if text_color else (255, 255, 255)  # Default text color
 
         self.font = pygame.font.Font(None, 36)
         self.action = action
 
-    def draw(self):
-
-        pygame.draw.rect(self.surface, self.color, self.rect)
-        text_surface = self.font.render(self.text, True, self.text_color)
-        text_rect = text_surface.get_rect(center=self.rect.center)
-        self.surface.blit(text_surface, text_rect)
-        
+    def draw(self):        
         if self.image:
             self.surface.blit(self.image, self.rect.topleft)
         else:
             pygame.draw.rect(self.surface, self.color, self.rect)
 
         if self.text:
+            pygame.draw.rect(self.surface, self.color, self.rect)
+            text_surface = self.font.render(self.text, True, self.text_color)
+            text_rect = text_surface.get_rect(center=self.rect.center)
+            self.surface.blit(text_surface, text_rect)
             text_surface = self.font.render(self.text, True, self.text_color)
             text_rect = text_surface.get_rect(center=self.rect.center)
             self.surface.blit(text_surface, text_rect)
