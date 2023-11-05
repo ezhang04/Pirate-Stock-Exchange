@@ -5,12 +5,14 @@ from mechanics import battle_phase
 from ship import Ship
 import random
 
+
 class scene_handler:
     
     def __init__(self,initial_scene,screen):
         self.current_scene = initial_scene
         self.screen = screen
         self.buttons = []
+
         self.ships = ["assets/ship1_inPixio.png", "assets/ship2_inPixio.png", "assets/ship3_inPixio.png","assets/ship4_inPixio.png",
                  "assets/ship5_inPixio.png","assets/ship6_inPixio.png","assets/ship7_inPixio.png","assets/ship8_inPixio.png"]
         self.shipnum = 0
@@ -41,18 +43,26 @@ class scene_handler:
     def scene_start(self):
         running = True
         bg = pygame.image.load("assets/start.png")
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
+
+        start_button = Button(self.screen, 200, 400, width=400, height=100, text="START!",
+                              color="#FCEA67", text_color="#69C5FA", font=(None,50))
+        self.buttons.append(start_button)
+        start_button.draw()
+
+
+        running = True
         while running:
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
                     running = False
 
-            self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
-
             pygame.display.flip()
             keys = pygame.key.get_pressed()
             if keys[pygame.K_ESCAPE]:
                 running = False
+   
  
     def scene_setup(self):
         bg = pygame.image.load("assets/oceanMap.png")
@@ -67,16 +77,32 @@ class scene_handler:
             if counter == 4:
                 x = 670
                 y = 150
+
             ship_button = Button(self.screen, x, y, 80, 80, image=ship,action=lambda:self.ship_chooser(ship))
             self.buttons.append(ship_button)
             ship_button.draw()
             y+=150
             counter += 1
 
+        #textboxes hehe
+        x = 80
+        y = 3
+        counter2 = 0
+        for i in range(8):
+            if counter2 == 4:
+                x = 350
+                y = 3
+            textbox = pygame.image.load("assets/setup_box.png")
+            pygame.transform.scale(textbox, (5,5)) #idk how to change its size
+            self.screen.blit(textbox, (x, y))
+            y+=150
+            counter2+=1
 
+        crews = []
+        num_crews = 8
 
-        textbox = pygame.image.load("assets/setup_box.png")
-        self.screen.blit(textbox, (100, 110))
+        for i in range(1, num_crews+1):
+            crews += [Ship(random.randrange(1, 31), random.randrange(1, 21), random.randrange(0, 1001))]
 
         running = True
         while running:
@@ -151,6 +177,10 @@ class scene_handler:
         active = False
       
         bg = pygame.image.load("assets/battle.png")
+
+        
+        textbox = pygame.image.load("assets/text.png")
+
         self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
         textbox = pygame.image.load("assets/textbox.png")
         self.screen.blit(pygame.transform.scale(textbox, (400, 400)), (0, 0))
@@ -360,7 +390,7 @@ class Button:
         self.color = color
         self.text_color = text_color
 
-    def __init__(self, surface, x, y, width, height, text=None, image=None, color=None, text_color=None, action=None):
+    def __init__(self, surface, x, y, width, height, text=None, image=None, color=None, text_color=None, font=None, action=None):
         self.surface = surface
         self.rect = pygame.Rect(x, y, width, height)
         self.text = text
