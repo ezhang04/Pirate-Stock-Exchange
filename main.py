@@ -7,10 +7,9 @@ from scenes import Button
 import time
 
 pygame.init()
-screen = pygame.display.set_mode((1250, 800))
+screen = pygame.display.set_mode((1000, 1000))
 clock = pygame.time.Clock()
 running = True
-
 
 crews = []
 num_crews = 12
