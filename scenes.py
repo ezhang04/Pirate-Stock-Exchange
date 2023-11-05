@@ -13,7 +13,7 @@ class scene_handler:
     def change_scene(self,scene):
         self.current_scene = scene
 
-    
+
     def scene_setup(screen):
       pass
 
@@ -34,19 +34,25 @@ class scene_handler:
     def scene_start(self):
         running = True
         bg = pygame.image.load("assets/start.png")
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
+
+        start_button = Button(self.screen, 200, 400, width=400, height=100, text="START!",
+                              color="#FCEA67", text_color="#69C5FA", font=(None,50))
+        self.buttons.append(start_button)
+        start_button.draw()
+
+
+        running = True
         while running:
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
                     running = False
 
-            self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
-                             
-
-        pygame.display.flip()
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_ESCAPE]:
-            running = False
+            pygame.display.flip()
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_ESCAPE]:
+                running = False
 
 
     def scene_setup(self):
@@ -65,7 +71,7 @@ class scene_handler:
             if counter == 4:
                 x = 670
                 y = 150
-            ship_button = Button(self.screen, x, y, 80, 80, image=ship,action=lambda:self.change_scene(2))
+            ship_button = Button(self.screen, x, y, 80, 80, image=ship,action=xf)
             self.buttons.append(ship_button)
             ship_button.draw()
             y+=150
@@ -205,7 +211,7 @@ class Button:
         self.color = color
         self.text_color = text_color
 
-    def __init__(self, surface, x, y, width, height, text=None, image=None, color=None, text_color=None, action=None):
+    def __init__(self, surface, x, y, width, height, text=None, image=None, color=None, text_color=None, font=None, action=None):
         self.surface = surface
         self.rect = pygame.Rect(x, y, width, height)
         self.text = text
