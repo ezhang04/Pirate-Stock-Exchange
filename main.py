@@ -21,7 +21,7 @@ BATTLE = 3
 WIN = 4
 LOSE = 5
 
-state = 0
+state = 1
 
 scene_handler = scene_handler(state, screen)
 
