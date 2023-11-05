@@ -1,5 +1,7 @@
 import pygame
 import time
+import random
+from ship import Ship
 
 class scene_handler:
     
@@ -7,8 +9,11 @@ class scene_handler:
         self.current_scene = initial_scene
         self.screen = screen
         self.buttons = []
+
     def change_scene(self,scene):
         self.current_scene = scene
+
+    
     def scene_setup(screen):
       pass
 
@@ -66,10 +71,25 @@ class scene_handler:
             y+=150
             counter += 1
 
+        #textboxes hehe
+        x = 80
+        y = 3
+        counter2 = 0
+        for i in range(8):
+            if counter2 == 4:
+                x = 350
+                y = 3
+            textbox = pygame.image.load("assets/setup_box.png")
+            pygame.transform.scale(textbox, (5,5)) #idk how to change its size
+            self.screen.blit(textbox, (x, y))
+            y+=150
+            counter2+=1
 
+        crews = []
+        num_crews = 8
 
-        textbox = pygame.image.load("assets/setup_box.png")
-        self.screen.blit(textbox, (100, 110))
+        for i in range(1, num_crews+1):
+            crews += [Ship(random.randrange(1, 31), random.randrange(1, 21), random.randrange(0, 1001))]
 
         running = True
         while running:
@@ -130,6 +150,7 @@ class scene_handler:
 
     def scene_battle(self):
         bg = pygame.image.load("assets/battle.png")
+        
         textbox = pygame.image.load("assets/text.png")
         self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
