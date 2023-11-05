@@ -26,7 +26,7 @@ LOSE = 5
 
 state = 0
 
-scene_handler = scene_handler(0,screen)
+scene_handler = scene_handler(1,screen)
 
 while running:
     events = pygame.event.get()
