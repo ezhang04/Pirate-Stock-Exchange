@@ -27,9 +27,8 @@ class scene_handler:
             self.scene_lose
 
     def scene_start(self):
-        #test
         bg = pygame.image.load("assets/oceanMap.png")
-        self.screen.blit(bg, (0,0))
+        self.screen.blit(pygame.transform.scale(bg, (1000, 1000)), (0, 0))
 
     def scene_setup(self):
         pass
