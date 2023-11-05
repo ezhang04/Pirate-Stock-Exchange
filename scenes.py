@@ -27,29 +27,31 @@ class scene_handler:
             self.scene_lose
 
     def scene_start(self):
+        pass
         bg = pygame.image.load("assets/start.png")
         self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
         
 
     def scene_setup(self):
         bg = pygame.image.load("assets/oceanMap.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
-        ships = ["assets/ship1_inPixio.png", "assets/ship2_inPixio.png","assets/ship3_inPixio.png","assets/ship4_inPixio.png",
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
+
+        ships = ["assets/ship1_inPixio.png", "assets/ship2_inPixio.png", "assets/ship3_inPixio.png","assets/ship4_inPixio.png",
                  "assets/ship5_inPixio.png","assets/ship6_inPixio.png","assets/ship7_inPixio.png","assets/ship8_inPixio.png"]
 
+        x=50
+        y=150
         counter = 0
-        x = 50
-        y = 10
+
         for ship in ships:
             if counter == 4:
-                x = 600
-                y = 10
-
-            y +=150
-            ship_button = Button(self.screen, x, y, 100, 100, image=ship)
+                x = 670
+                y = 150
+            ship_button = Button(self.screen, x, y, 80, 80, image=ship)
+            self.buttons.append(ship_button)
             ship_button.draw()
+            y+=150
             counter += 1
-        
 
     def scene_main(self):   
         bg = pygame.image.load("assets/oceanMap.png")
