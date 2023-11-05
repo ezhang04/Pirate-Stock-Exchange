@@ -27,21 +27,13 @@ LOSE = 5
 state = 5
 
 
-scene_handler = scene_handler(3,screen)
+scene_handler = scene_handler(1,screen)
 
 while running:
-    events = pygame.event.get()
-    for event in events:
-        if event.type == pygame.QUIT:
-            running = False
-
     scene_handler.present_scene()
-
     keys = pygame.key.get_pressed()
     if keys[pygame.K_ESCAPE]:
         running = False
 
     pygame.display.flip()
-    clock.tick(60)
-
 pygame.quit()
