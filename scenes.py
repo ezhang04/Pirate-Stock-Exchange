@@ -24,21 +24,34 @@ class scene_handler:
         if self.current_scene == 4:
             self.scene_win()
         if self.current_scene == 5:
-            self.scene_lose
+            self.scene_lose()
 
     def scene_start(self):
-        pass
-        bg = pygame.image.load("assets/start.png")
-        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
-        
+        running = True
+        bg = pygame.image.load("assets/oceanMap.png")
+        while running:
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    running = False
+
+            self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
+
+
+            pygame.display.flip()
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_ESCAPE]:
+                running = False
+
 
     def scene_setup(self):
         bg = pygame.image.load("assets/oceanMap.png")
-        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
         ships = ["assets/ship1_inPixio.png", "assets/ship2_inPixio.png", "assets/ship3_inPixio.png","assets/ship4_inPixio.png",
                  "assets/ship5_inPixio.png","assets/ship6_inPixio.png","assets/ship7_inPixio.png","assets/ship8_inPixio.png"]
-
+        
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
+        
         x=50
         y=150
         counter = 0
@@ -47,11 +60,33 @@ class scene_handler:
             if counter == 4:
                 x = 670
                 y = 150
-            ship_button = Button(self.screen, x, y, 80, 80, image=ship)
+            ship_button = Button(self.screen, x, y, 80, 80, image=ship,action=lambda:self.change_scene(2))
             self.buttons.append(ship_button)
             ship_button.draw()
             y+=150
             counter += 1
+            
+        running = True
+        while running:
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    running = False
+                for button in self.buttons:
+                    button.handle_event(event)
+            if self.current_scene != 1:
+                running = False
+                self.buttons.clear()
+            
+            pygame.display.flip()
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_ESCAPE]:
+                running = False
+            
+                
+            
+
+        
 
     def scene_main(self):   
         bg = pygame.image.load("assets/oceanMap.png")
@@ -74,11 +109,66 @@ class scene_handler:
             if i % 4 == 0:
                 ship_x = 150
                 ship_y += 150 + ship_margin
+        
+        running = True
+        while running:
+                events = pygame.event.get()
+                for event in events:
+                    if event.type == pygame.QUIT:
+                        running = False
+                    for button in self.buttons:
+                        button.handle_event(event)
+                if self.current_scene != 1:
+                    running = False
+                    self.buttons.clear()
+                
+                pygame.display.flip()
+                keys = pygame.key.get_pressed()
+                if keys[pygame.K_ESCAPE]:
+                    running = False
+            
 
     def scene_battle(self):
+
         bg = pygame.image.load("assets/battle.png")
+        textbox = pygame.image.load("assets/text.png")
         self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
+
+        #text1
+        text1 = ["TIME TO FIGHT!!!! Well, almost..." ,
+                 "First you need to assemble ",
+                "the crew! You only have a ",
+                "certain amount of crew members",
+                "so make sure you allocate accordingly",
+                "with your power level!"]
+       
+        font = pygame.font.Font('freesansbold.ttf', 15)
+ 
+        current_y = -10
+        for line in text1:
+            text = font.render(line, True,(0,0,0))
+            textRect = text.get_rect()
+            current_y+=40
+            textRect.topleft = (20,current_y)
+            self.screen.blit(text,textRect)
+
+        while running:
+                events = pygame.event.get()
+                for event in events:
+                    if event.type == pygame.QUIT:
+                        running = False
+                    for button in self.buttons:
+                        button.handle_event(event)
+                if self.current_scene != 1:
+                    running = False
+                    self.buttons.clear()
+                
+                pygame.display.flip()
+                keys = pygame.key.get_pressed()
+                if keys[pygame.K_ESCAPE]:
+                    running = False
+                    
     def scene_win(self):
         bg = pygame.image.load("assets/win.png")
         self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
