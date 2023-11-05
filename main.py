@@ -3,6 +3,7 @@ from pygame import *
 import random
 from ship import Ship
 from scenes import scene_handler
+from scenes import Button
 import time
 
 pygame.init()
