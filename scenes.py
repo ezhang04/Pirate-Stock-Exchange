@@ -28,7 +28,7 @@ class scene_handler:
 
     def scene_start(self):
         running = True
-        bg = pygame.image.load("assets/oceanMap.png")
+        bg = pygame.image.load("assets/start.png")
         while running:
             events = pygame.event.get()
             for event in events:
@@ -37,11 +37,10 @@ class scene_handler:
 
             self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
-
-            pygame.display.flip()
-            keys = pygame.key.get_pressed()
-            if keys[pygame.K_ESCAPE]:
-                running = False
+        pygame.display.flip()
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_ESCAPE]:
+            running = False
 
 
     def scene_setup(self):
@@ -65,7 +64,12 @@ class scene_handler:
             ship_button.draw()
             y+=150
             counter += 1
-            
+
+
+
+        textbox = pygame.image.load("assets/setup_box.png")
+        self.screen.blit(textbox, (100, 110))
+
         running = True
         while running:
             events = pygame.event.get()
@@ -82,12 +86,7 @@ class scene_handler:
             keys = pygame.key.get_pressed()
             if keys[pygame.K_ESCAPE]:
                 running = False
-            
-                
-            
-
         
-
     def scene_main(self):   
         bg = pygame.image.load("assets/oceanMap.png")
         self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
@@ -129,11 +128,9 @@ class scene_handler:
             
 
     def scene_battle(self):
-
         bg = pygame.image.load("assets/battle.png")
         textbox = pygame.image.load("assets/text.png")
         self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
-
 
         #text1
         text1 = ["TIME TO FIGHT!!!! Well, almost..." ,
