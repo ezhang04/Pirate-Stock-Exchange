@@ -7,7 +7,7 @@ from scenes import Button
 import time
 
 pygame.init()
-screen = pygame.display.set_mode((1000, 1000))
+screen = pygame.display.set_mode((800, 800))
 clock = pygame.time.Clock()
 running = True
 
@@ -26,7 +26,7 @@ LOSE = 5
 
 state = 0
 
-scene_handler = scene_handler(0,screen)
+scene_handler = scene_handler(3,screen)
 
 while running:
     events = pygame.event.get()

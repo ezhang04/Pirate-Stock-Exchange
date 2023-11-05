@@ -28,7 +28,7 @@ class scene_handler:
 
     def scene_start(self):
         bg = pygame.image.load("assets/oceanMap.png")
-        self.screen.blit(pygame.transform.scale(bg, (1000, 1000)), (0, 0))
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
     def scene_setup(self):
         pass
@@ -39,7 +39,28 @@ class scene_handler:
         pass
 
     def scene_battle(self):
-        pass
+        bg = pygame.image.load("assets/battle.png")
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
+
+        #text1
+        text1 = ["TIME TO FIGHT!!!! Well, almost..." ,
+                 "First you need to assemble ",
+                "the crew! You only have a ",
+                "certain amount of crew members",
+                "so make sure you allocate accordingly",
+                "with your power level!"]
+        
+        font = pygame.font.Font('freesansbold.ttf', 15)
+ 
+        current_y = -10
+        for line in text1:
+            text = font.render(line, True,(0,0,0))
+            textRect = text.get_rect()
+            current_y+=40
+            textRect.topleft = (20,current_y)
+            self.screen.blit(text,textRect)
+
+
 
     def scene_win(self):
         pass
