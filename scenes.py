@@ -27,19 +27,63 @@ class scene_handler:
             self.scene_lose
 
     def scene_start(self):
+<<<<<<< HEAD
         bg = pygame.image.load("assets/oceanMap.png")
         self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
+=======
+        bg = pygame.image.load("assets/start.png")
+        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        
+>>>>>>> 667fd81adf3fffc0f9b1b9ddaa8a90cf577b7a60
 
     def scene_setup(self):
-        pass
+        bg = pygame.image.load("assets/oceanMap.png")
+        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        ship_margin = 50
+
+        ship_x = 150
+        ship_y = 250
+
+        for i in range(1, 9):
+            
+            ship_image = pygame.image.load(f"assets/ship{i}_inPixio.png")
+
+            resized_ship = pygame.transform.scale(ship_image, (100, 100))
+
+            self.screen.blit(resized_ship, (ship_x, ship_y))
+
+            ship_x += 100 + ship_margin
+
+            if i % 4 == 0:
+                ship_x = 150
+                ship_y += 150 + ship_margin
+        
 
     def scene_main(self):   
-        self.screen.clear()
-        self.screen.fill((255, 255, 255))
-        pass
+        bg = pygame.image.load("assets/oceanMap.png")
+        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+        ship_margin = 50
+
+        ship_x = 150
+        ship_y = 250
+
+        for i in range(1, 9):
+            
+            ship_image = pygame.image.load(f"assets/ship{i}_inPixio.png")
+
+            resized_ship = pygame.transform.scale(ship_image, (100, 100))
+
+            self.screen.blit(resized_ship, (ship_x, ship_y))
+
+            ship_x += 100 + ship_margin
+
+            if i % 4 == 0:
+                ship_x = 150
+                ship_y += 150 + ship_margin
 
     def scene_battle(self):
         bg = pygame.image.load("assets/battle.png")
+<<<<<<< HEAD
         self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
         #text1
@@ -61,12 +105,17 @@ class scene_handler:
             self.screen.blit(text,textRect)
 
 
+=======
+        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
+>>>>>>> 667fd81adf3fffc0f9b1b9ddaa8a90cf577b7a60
 
     def scene_win(self):
-        pass
+        bg = pygame.image.load("assets/win.png")
+        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
 
     def scene_lose(self):
-        pass
+        bg = pygame.image.load("assets/lose.png")
+        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
 
 class Button:
 

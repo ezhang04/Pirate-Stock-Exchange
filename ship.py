@@ -1,3 +1,4 @@
+import pygame
 class Ship:
     def __init__(self, crew, power, wealth):
         '''

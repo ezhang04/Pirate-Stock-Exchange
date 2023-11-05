@@ -22,9 +22,9 @@ def battle_phase(user_crew, user_crew_positions, enemy_crew, enemy_crew_position
         enemy_diff = int(enemy_hp) - sum(enemy_crew_positions) #get the number of units killed in this tick on enemy team
 
         for i in range(user_diff):
-            user_crew_values[randrange(0, 4)] -= 1 #for each dead crew mate, lose a random position
+            user_crew_values[random.randrange(0, 4)] -= 1 #for each dead crew mate, lose a random position
         for i in range(enemy_diff):
-            user_crew_values[randrange(0, 4)] -= 1 #for each dead crew mate, lose a random position
+            user_crew_values[random.randrange(0, 4)] -= 1 #for each dead crew mate, lose a random position
         
         if(user_hp <= 0 and enemy_hp <= 0): return 0 #tie
         if(user_hp <= 0): return -1 #enemy wins
