@@ -75,7 +75,8 @@ class scene_handler:
         x=50
         y=150
         counter = 0
-
+        text = []
+        count = 0
         for ship in self.ships:
             if counter == 4:
                 x = 670
@@ -86,18 +87,29 @@ class scene_handler:
             ship_button.draw()
             y+=150
             counter += 1
-
         #textboxes hehe
+        font = pygame.font.Font(None, 36)
         x = 80
         y = 3
         counter2 = 0
+        text = ['','','','','','','','']
         for i in range(8):
+            int1 = random.randrange(1, 31)
+            int2 = random.randrange(1, 21)
+            int3 = random.randrange(0, 1001)
+            text[i] = str(int1) + ' ' + str(int2) + ' ' + str(int3)
             if counter2 == 4:
                 x = 350
                 y = 3
             textbox = pygame.image.load("assets/setup_box.png")
             pygame.transform.scale(textbox, (5,5)) #idk how to change its size
             self.screen.blit(textbox, (x, y))
+            # Render the text
+            text_surface = font.render(text[i], True, (0, 0, 0))
+
+            # Blit the text onto the screen
+            text_rect = text_surface.get_rect(center=(x+225 , y+180))
+            self.screen.blit(text_surface, text_rect)
             y+=150
             counter2+=1
 
