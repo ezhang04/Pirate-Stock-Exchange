@@ -7,7 +7,7 @@ from scenes import Button
 import time
 
 pygame.init()
-screen = pygame.display.set_mode((820, 820))
+screen = pygame.display.set_mode((800, 800))
 clock = pygame.time.Clock()
 running = True
 
