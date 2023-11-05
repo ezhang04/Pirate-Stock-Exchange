@@ -1,5 +1,6 @@
+import pygame
 class Ship:
-    def __init__(self, crew, power, wealth):
+    def __init__(self, crew, power, wealth,path):
         '''
         Crew: Integer (number of pirates)
         Power: Integer
@@ -8,6 +9,7 @@ class Ship:
         self.crew = crew
         self.power = power
         self.wealth = wealth
+        self.sprite = pygame.image.load(path)
     
     def setCrew(self, crew):
         self.crew = crew

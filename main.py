@@ -14,8 +14,8 @@ running = True
 crews = []
 num_crews = 12
 
-for i in range(1,num_crews):
-    crews += [Ship(random.randrange(1, 31), random.randrange(1, 21), random.randrange(0, 1001))]
+for i in range(1,num_crews+1):
+    crews += [Ship(random.randrange(1, 31), random.randrange(1, 21), random.randrange(0, 1001),"asset/ship"+str(i)+"inPixio.png")]
 
 START = 0
 SET = 1
