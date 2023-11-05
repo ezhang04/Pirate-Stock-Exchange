@@ -24,40 +24,34 @@ class scene_handler:
         if self.current_scene == 4:
             self.scene_win()
         if self.current_scene == 5:
-            self.scene_lose
+            self.scene_lose()
 
     def scene_start(self):
-<<<<<<< HEAD
         bg = pygame.image.load("assets/oceanMap.png")
         self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
-=======
-        bg = pygame.image.load("assets/start.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
-        
->>>>>>> 667fd81adf3fffc0f9b1b9ddaa8a90cf577b7a60
+
+
 
     def scene_setup(self):
         bg = pygame.image.load("assets/oceanMap.png")
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
-        ship_margin = 50
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
 
-        ship_x = 150
-        ship_y = 250
+        ships = ["assets/ship1_inPixio.png", "assets/ship2_inPixio.png", "assets/ship3_inPixio.png","assets/ship4_inPixio.png",
+                 "assets/ship5_inPixio.png","assets/ship6_inPixio.png","assets/ship7_inPixio.png","assets/ship8_inPixio.png"]
 
-        for i in range(1, 9):
-            
-            ship_image = pygame.image.load(f"assets/ship{i}_inPixio.png")
+        x=50
+        y=150
+        counter = 0
 
-            resized_ship = pygame.transform.scale(ship_image, (100, 100))
-
-            self.screen.blit(resized_ship, (ship_x, ship_y))
-
-            ship_x += 100 + ship_margin
-
-            if i % 4 == 0:
-                ship_x = 150
-                ship_y += 150 + ship_margin
-        
+        for ship in ships:
+            if counter == 4:
+                x = 670
+                y = 150
+            ship_button = Button(self.screen, x, y, 80, 80, image=ship)
+            self.buttons.append(ship_button)
+            ship_button.draw()
+            y+=150
+            counter += 1
 
     def scene_main(self):   
         bg = pygame.image.load("assets/oceanMap.png")
@@ -82,32 +76,7 @@ class scene_handler:
                 ship_y += 150 + ship_margin
 
     def scene_battle(self):
-        bg = pygame.image.load("assets/battle.png")
-<<<<<<< HEAD
-        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
-
-        #text1
-        text1 = ["TIME TO FIGHT!!!! Well, almost..." ,
-                 "First you need to assemble ",
-                "the crew! You only have a ",
-                "certain amount of crew members",
-                "so make sure you allocate accordingly",
-                "with your power level!"]
-        
-        font = pygame.font.Font('freesansbold.ttf', 15)
- 
-        current_y = -10
-        for line in text1:
-            text = font.render(line, True,(0,0,0))
-            textRect = text.get_rect()
-            current_y+=40
-            textRect.topleft = (20,current_y)
-            self.screen.blit(text,textRect)
-
-
-=======
-        self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
->>>>>>> 667fd81adf3fffc0f9b1b9ddaa8a90cf577b7a60
+        pass
 
     def scene_win(self):
         bg = pygame.image.load("assets/win.png")
