@@ -24,7 +24,7 @@ class scene_handler:
         if self.current_scene == 4:
             self.scene_win()
         if self.current_scene == 5:
-            self.scene_lose
+            self.scene_lose()
 
     def scene_start(self):
         bg = pygame.image.load("assets/start.png")

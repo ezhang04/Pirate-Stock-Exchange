@@ -24,9 +24,9 @@ BATTLE = 3
 WIN = 4
 LOSE = 5
 
-state = 0
+state = 5
 
-scene_handler = scene_handler(0,screen)
+scene_handler = scene_handler(state,screen)
 
 while running:
     events = pygame.event.get()
