@@ -27,17 +27,16 @@ class scene_handler:
             self.scene_lose
 
     def scene_start(self):
-<<<<<<< HEAD
-        bg = pygame.image.load("assets/oceanMap.png")
-        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
-=======
         bg = pygame.image.load("assets/start.png")
         self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
         
->>>>>>> 667fd81adf3fffc0f9b1b9ddaa8a90cf577b7a60
 
     def scene_setup(self):
         bg = pygame.image.load("assets/oceanMap.png")
+        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
+
+    def scene_setup(self):
+        pass
         self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
         ship_margin = 50
 
@@ -83,31 +82,7 @@ class scene_handler:
 
     def scene_battle(self):
         bg = pygame.image.load("assets/battle.png")
-<<<<<<< HEAD
-        self.screen.blit(pygame.transform.scale(bg, (800, 800)), (0, 0))
-
-        #text1
-        text1 = ["TIME TO FIGHT!!!! Well, almost..." ,
-                 "First you need to assemble ",
-                "the crew! You only have a ",
-                "certain amount of crew members",
-                "so make sure you allocate accordingly",
-                "with your power level!"]
-        
-        font = pygame.font.Font('freesansbold.ttf', 15)
- 
-        current_y = -10
-        for line in text1:
-            text = font.render(line, True,(0,0,0))
-            textRect = text.get_rect()
-            current_y+=40
-            textRect.topleft = (20,current_y)
-            self.screen.blit(text,textRect)
-
-
-=======
         self.screen.blit(pygame.transform.scale(bg, (820, 820)), (0, 0))
->>>>>>> 667fd81adf3fffc0f9b1b9ddaa8a90cf577b7a60
 
     def scene_win(self):
         bg = pygame.image.load("assets/win.png")
